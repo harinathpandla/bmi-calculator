@@ -68,3 +68,25 @@ extension BmiCategoryDetails on BmiCategory {
     }
   }
 }
+
+class BmiResult {
+  final double bmi;
+  final BmiCategory category;
+  final double heightCm;
+  final double weightKg;
+  final double minHealthyWeightKg;
+  final double maxHealthyWeightKg;
+
+  const BmiResult({
+    required this.bmi,
+    required this.category,
+    required this.heightCm,
+    required this.weightKg,
+    required this.minHealthyWeightKg,
+    required this.maxHealthyWeightKg,
+  });
+
+  String get formattedBmi => bmi.toStringAsFixed(1);
+  String get formattedMinHealthyWeight => minHealthyWeightKg.toStringAsFixed(1);
+  String get formattedMaxHealthyWeight => maxHealthyWeightKg.toStringAsFixed(1);
+}
