@@ -20,4 +20,42 @@ class BmiCalculator {
     final double heightMeters = heightCm / 100.0;
     return weightKg / (heightMeters * heightMeters);
   }
+
+  static BmiCategory classifyBmi(double bmi) {
+    if (bmi < 18.5) {
+      return BmiCategory.underweight;
+    } else if (bmi < 25.0) {
+      return BmiCategory.healthyWeight;
+    } else if (bmi < 30.0) {
+      return BmiCategory.overweight;
+    } else {
+      return BmiCategory.obesity;
+    }
+  }
+
+  static BmiResult computeResult({
+    required double heightCm,
+    required double weightKg,
+  }) {
+    final double bmi = calculateBmiMetric(
+      heightCm: heightCm,
+      weightKg: weightKg,
+    );
+    final BmiCategory category = classifyBmi(bmi);
+
+    final double heightMeters = heightCm / 100.0;
+    final double heightSquared = heightMeters * heightMeters;
+
+    final double minHealthyWeight = 18.5 * heightSquared;
+    final double maxHealthyWeight = 24.9 * heightSquared;
+
+    return BmiResult(
+      bmi: bmi,
+      category: category,
+      heightCm: heightCm,
+      weightKg: weightKg,
+      minHealthyWeightKg: minHealthyWeight,
+      maxHealthyWeightKg: maxHealthyWeight,
+    );
+  }
 }
