@@ -58,4 +58,24 @@ class BmiCalculator {
       maxHealthyWeightKg: maxHealthyWeight,
     );
   }
+
+  static double feetAndInchesToCm(double feet, double inches) {
+    final double totalInches = (feet * 12.0) + inches;
+    return totalInches * 2.54;
+  }
+
+  static double poundsToKg(double pounds) {
+    return pounds * 0.45359237;
+  }
+
+  static double kgToPounds(double kg) {
+    return kg / 0.45359237;
+  }
+
+  static ({int feet, double inches}) cmToFeetAndInches(double cm) {
+    final double totalInches = cm / 2.54;
+    final int feet = totalInches ~/ 12;
+    final double inches = totalInches % 12;
+    return (feet: feet, inches: inches);
+  }
 }
