@@ -78,4 +78,47 @@ class BmiCalculator {
     final double inches = totalInches % 12;
     return (feet: feet, inches: inches);
   }
+
+  static String? validateHeightCm(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Please enter your height';
+    }
+
+    final double? parsed = double.tryParse(value.trim());
+    if (parsed == null || parsed.isNaN || !parsed.isFinite) {
+      return 'Enter a valid numeric height';
+    }
+
+    if (parsed <= 0) {
+      return 'Height must be greater than 0';
+    }
+
+    if (parsed < minHeightCm || parsed > maxHeightCm) {
+      return 'Enter a realistic height ($minHeightCm–$maxHeightCm cm)';
+    }
+
+    return null;
+  }
+
+  static String? validateHeightFeet(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Enter feet';
+    }
+    final double? parsed = double.tryParse(value.trim());
+    if (parsed == null || parsed < 1 || parsed > 9) {
+      return 'Feet (1–9)';
+    }
+    return null;
+  }
+
+  static String? validateHeightInches(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Enter inches';
+    }
+    final double? parsed = double.tryParse(value.trim());
+    if (parsed == null || parsed < 0 || parsed >= 12) {
+      return 'Inches (0–11.9)';
+    }
+    return null;
+  }
 }
