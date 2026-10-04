@@ -100,6 +100,27 @@ class BmiCalculator {
     return null;
   }
 
+  static String? validateWeightKg(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Please enter your weight';
+    }
+
+    final double? parsed = double.tryParse(value.trim());
+    if (parsed == null || parsed.isNaN || !parsed.isFinite) {
+      return 'Enter a valid numeric weight';
+    }
+
+    if (parsed <= 0) {
+      return 'Weight must be greater than 0';
+    }
+
+    if (parsed < minWeightKg || parsed > maxWeightKg) {
+      return 'Enter a realistic weight ($minWeightKg–$maxWeightKg kg)';
+    }
+
+    return null;
+  }
+
   static String? validateHeightFeet(String? value) {
     if (value == null || value.trim().isEmpty) {
       return 'Enter feet';
@@ -118,6 +139,20 @@ class BmiCalculator {
     final double? parsed = double.tryParse(value.trim());
     if (parsed == null || parsed < 0 || parsed >= 12) {
       return 'Inches (0–11.9)';
+    }
+    return null;
+  }
+
+  static String? validateWeightLbs(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Please enter your weight in lbs';
+    }
+    final double? parsed = double.tryParse(value.trim());
+    if (parsed == null || parsed <= 0) {
+      return 'Weight must be greater than 0';
+    }
+    if (parsed < 22 || parsed > 1100) {
+      return 'Enter weight between 22 and 1100 lbs';
     }
     return null;
   }
