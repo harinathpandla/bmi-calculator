@@ -1,1 +1,7 @@
+## Project Abstract — BMI Calculator
 
+The **BMI Calculator** is a Flutter-based mobile application designed to calculate a person's **Body Mass Index (BMI)** based on their height and weight. The application provides a simple and user-friendly interface where users can enter their height in centimeters and weight in kilograms. The system automatically calculates BMI using the standard formula and displays the corresponding BMI category, such as underweight, normal range, overweight, or obesity.
+
+The main objective of this project is to provide a quick and convenient way to calculate BMI without performing manual calculations. The application is developed using **Flutter and Dart**, making it suitable for Android devices and easy to maintain and extend. The project demonstrates important concepts such as user input handling, mathematical calculations, conditional statements, UI design, and state management in Flutter.
+
+The application can be further enhanced by adding features such as BMI history, progress tracking, charts, and additional health-related information. Overall, the BMI Calculator is a simple and practical project that demonstrates the development of a functional mobile application using Flutter.
