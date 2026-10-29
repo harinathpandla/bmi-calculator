@@ -239,3 +239,8 @@ flutter test test/widget_test.dart
 - **Class / Semester:** B.Tech 3rd Year, Semester 1
 - **Course:** UI Design – Flutter Lab
 - **College:** ACE Engineering College, Hyderabad, Telangana
+
+## ?? License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
