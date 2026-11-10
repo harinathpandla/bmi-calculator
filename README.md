@@ -192,32 +192,107 @@ flutter test test/widget_test.dart
 
 ---
 
-## 📸 10. Application Screenshots
+---
 
-| Screen 1: Home & Input Form | Screen 2: Result & Category Spectrum | Screen 3: About BMI & Formula |
-| :---: | :---: | :---: |
-| *(Add screenshot_home.png here)* | *(Add screenshot_result.png here)* | *(Add screenshot_about.png here)* |
+## 🔬 10. Flutter Lab Manual Experiments and Screenshots
 
-*(Note: Replace placeholders with captured mobile screenshots for your lab record and presentation).*
+Each experiment has its own screenshot location below. Screenshots will be displayed directly under the related experiment—not collected in a gallery.
+
+### Experiment 1: Flutter and Dart SDK Setup
+**Objective:** Install and verify the Flutter and Dart development environment, and run a basic Dart program.
+
+**Project evidence:** Flutter project configuration is present. A separate basic Dart demonstration is not currently included in the app source.
+
+**Screenshot:** Add the terminal screenshot at `screenshots/experiment-01-setup.png`.
+
+> Status: Screenshot pending. Capture the Flutter/Dart version and basic Dart program output.
 
 ---
 
-## 🔬 11. Flutter Lab Manual Experiment Mapping
+### Experiment 2: Flutter Widgets and Layouts
+**Objective:** Explore common Flutter widgets and arrange them using Row, Column, and other layout widgets.
 
-| Lab Experiment | Description | Project Implementation |
-| :--- | :--- | :--- |
-| **Experiment 2** | Flutter Widgets and Layouts | Nesting of `Scaffold`, `AppBar`, `Container`, `Card`, `Column`, `Row`, `Icon`, and `ElevatedButton`. |
-| **Experiment 3** | Responsive User Interface | Adaptive padding using `LayoutBuilder`, dimensions via `MediaQuery`, and `SingleChildScrollView` to prevent `RenderFlex` overflow. |
-| **Experiment 4** | Navigation | Named routes (`/`, `/about`, `/result`) and `Navigator.push` / `Navigator.pop`. |
-| **Experiment 5** | State Management | `StatefulWidget` and `setState()` for dynamic unit toggles and resetting inputs. |
-| **Experiment 6** | Custom Widgets and Themes | Modular widgets (`CustomInputField`, `CustomButton`, `BmiResultCard`, `BmiCategoryIndicator`) styled via centralized `AppTheme`. |
-| **Experiment 7** | Forms and Validation | `Form`, `GlobalKey<FormState>`, `TextFormField`, and custom validators for positive numeric limits. |
-| **Experiment 8** | UI Animations | Subtle animated card entry with `AnimatedOpacity` and `AnimatedContainer`. |
-| **Experiment 10** | Testing and Debugging | Unit tests and widget tests built using `flutter_test`, `expect()`, and `WidgetTester`. |
+**Project implementation:** The BMI home screen uses Flutter UI widgets such as Scaffold, AppBar, Container, Card, Column, Row, icons, and buttons.
+
+**Screenshot:** Add the BMI home-screen screenshot at `screenshots/experiment-02-widgets.png`.
 
 ---
 
-## 🚀 12. Limitations and Future Enhancements
+### Experiment 3: Responsive User Interface
+**Objective:** Create a UI that adapts to different screen sizes.
+
+**Project implementation:** The app uses `MediaQuery`, `LayoutBuilder`, and scrollable layouts to adapt its interface.
+
+**Screenshot:** Add a screenshot showing the app at a narrow and a wider window size at `screenshots/experiment-03-responsive.png`.
+
+---
+
+### Experiment 4: Navigation Using Navigator and Named Routes
+**Objective:** Move between screens using Flutter navigation.
+
+**Project implementation:** The app contains home, result, and About screens. Some navigation uses `MaterialPageRoute`; named routes are also defined in the app.
+
+**Screenshot:** Add screenshots showing the Home, Result, and About screens at `screenshots/experiment-04-navigation.png`.
+
+---
+
+### Experiment 5: Stateful and Stateless Widgets
+**Objective:** Understand widget state and update the UI using `setState()`. Provider is an additional syllabus concept.
+
+**Project implementation:** The app uses `StatefulWidget` and `setState()` for interactive input and unit selection. Provider is not currently implemented.
+
+**Screenshot:** Add a screenshot showing the unit selector and updated input fields at `screenshots/experiment-05-state.png`.
+
+---
+
+### Experiment 6: Custom Widgets and Themes
+**Objective:** Build reusable custom widgets and apply consistent styling.
+
+**Project implementation:** Reusable input fields, buttons, result cards, and category indicators are organized under `lib/widgets/`. The shared theme is defined in `lib/theme/app_theme.dart`.
+
+**Screenshot:** Add a screenshot showing the styled input fields, buttons, and result card at `screenshots/experiment-06-custom-widgets.png`.
+
+---
+
+### Experiment 7: Forms, Validation, and Error Handling
+**Objective:** Create forms and validate user input.
+
+**Project implementation:** The app uses `Form`, `GlobalKey<FormState>`, `TextFormField`, and custom validation logic.
+
+**Screenshot:** Add a screenshot showing validation messages for invalid or empty input at `screenshots/experiment-07-validation.png`.
+
+---
+
+### Experiment 8: Flutter Animations
+**Objective:** Add animations to improve the user interface.
+
+**Project implementation:** The result UI uses `AnimatedOpacity` and `AnimatedContainer`.
+
+**Screenshot:** Add a screenshot of the result screen during or after its animated transition at `screenshots/experiment-08-animation.png`.
+
+---
+
+### Experiment 9: Fetching and Displaying REST API Data
+**Objective:** Fetch data from a REST API and display it in the Flutter application.
+
+**Project implementation:** This BMI Calculator currently works offline and does not contain a REST API integration.
+
+**Screenshot:** Not available yet. Implement the API experiment first, then add its actual output screenshot at `screenshots/experiment-09-api.png`.
+
+> Status: Not implemented in the current project. No screenshot is claimed.
+
+---
+
+### Experiment 10: Unit Testing and Debugging
+**Objective:** Test application logic and UI components.
+
+**Project implementation:** The project contains `test/bmi_calculator_test.dart` and `test/widget_test.dart`, using Flutter's `flutter_test` framework.
+
+**Screenshot:** Add a terminal screenshot showing the actual successful `flutter test` output at `screenshots/experiment-10-testing.png`.
+
+---
+
+## 🚀 11. Limitations and Future Enhancements
 
 ### Current Limitations:
 1. BMI does not differentiate between skeletal muscle mass and body adipose tissue.
@@ -231,7 +306,7 @@ flutter test test/widget_test.dart
 
 ---
 
-## 👨‍🎓 13. Student & Institutional Details
+## 👨‍🎓 12. Student & Institutional Details
 
 - **Student Name:** Harinath
 - **Roll Number:** 24AG1A05A9
