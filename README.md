@@ -223,7 +223,9 @@ Each experiment has its own screenshot location below. Screenshots will be displ
 
 **Project implementation:** The app uses `MediaQuery`, `LayoutBuilder`, and scrollable layouts to adapt its interface.
 
-**Screenshot:** ![Responsive mobile layout](https://raw.githubusercontent.com/harinathpandla/bmi-calculator/main/screenshots/experiment-03-responsive-mobile.png)\n\n![Responsive wide layout](https://raw.githubusercontent.com/harinathpandla/bmi-calculator/main/screenshots/experiment-03-responsive-wide.png)
+**Screenshot:** ![Responsive mobile layout](https://raw.githubusercontent.com/harinathpandla/bmi-calculator/main/screenshots/experiment-03-responsive-mobile.png)
+
+![Responsive wide layout](https://raw.githubusercontent.com/harinathpandla/bmi-calculator/main/screenshots/experiment-03-responsive-wide.png)
 
 ---
 
@@ -232,7 +234,11 @@ Each experiment has its own screenshot location below. Screenshots will be displ
 
 **Project implementation:** The app contains home, result, and About screens. Some navigation uses `MaterialPageRoute`; named routes are also defined in the app.
 
-**Screenshot:** ![Home screen](https://raw.githubusercontent.com/harinathpandla/bmi-calculator/main/screenshots/experiment-02-widgets.png)\n\n![Result screen](https://raw.githubusercontent.com/harinathpandla/bmi-calculator/main/screenshots/experiment-04-result.png)\n\n![About screen](https://raw.githubusercontent.com/harinathpandla/bmi-calculator/main/screenshots/experiment-04-about.png)
+**Screenshot:** ![Home screen](https://raw.githubusercontent.com/harinathpandla/bmi-calculator/main/screenshots/experiment-02-widgets.png)
+
+![Result screen](https://raw.githubusercontent.com/harinathpandla/bmi-calculator/main/screenshots/experiment-04-result.png)
+
+![About screen](https://raw.githubusercontent.com/harinathpandla/bmi-calculator/main/screenshots/experiment-04-about.png)
 
 ---
 
