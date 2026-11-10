@@ -1,0 +1,124 @@
+name: Capture Flutter Lab Experiment Screenshots
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/capture-experiment-screenshots.yml'
+      - 'lib/**'
+      - 'test/**'
+      - 'pubspec.yaml'
+      - 'README.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Install dependencies and build web app
+        run: |
+          flutter --version | tee /tmp/flutter-version.txt
+          dart --version 2>&1 | tee /tmp/dart-version.txt
+          flutter pub get
+          flutter test 2>&1 | tee /tmp/flutter-test-output.txt
+          flutter build web --release
+
+      - name: Set up Node and Playwright
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Capture actual app screens
+        run: |
+          mkdir -p screenshots
+          (cd build/web && python3 -m http.server 8080 >/tmp/flutter-web.log 2>&1 &)
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8080 >/dev/null; then break; fi
+            sleep 2
+          done
+          cat > /tmp/capture.cjs <<'EOF'
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+          (async () => {
+            const browser = await chromium.launch({headless:true, args:['--no-sandbox']});
+            const page = await browser.newPage({viewport:{width:390,height:844}, deviceScaleFactor:1});
+            page.setDefaultTimeout(15000);
+            await page.goto('http://127.0.0.1:8080', {waitUntil:'networkidle'});
+            await page.screenshot({path:'screenshots/experiment-02-widgets.png', fullPage:true});
+
+            await page.setViewportSize({width:360,height:800});
+            await page.screenshot({path:'screenshots/experiment-03-responsive-mobile.png', fullPage:true});
+            await page.setViewportSize({width:1280,height:900});
+            await page.screenshot({path:'screenshots/experiment-03-responsive-wide.png', fullPage:true});
+
+            await page.setViewportSize({width:390,height:844});
+            const fields = page.locator('input');
+            await page.getByText('Imperial (ft / lbs)', {exact:true}).click();
+            await page.screenshot({path:'screenshots/experiment-05-state.png', fullPage:true});
+
+            await page.getByText('Metric (cm / kg)', {exact:true}).click();
+            await page.getByRole('button', {name:/Calculate BMI/i}).click();
+            await page.screenshot({path:'screenshots/experiment-07-validation.png', fullPage:true});
+
+            const metricFields = page.locator('input');
+            await metricFields.nth(0).fill('170');
+            await metricFields.nth(1).fill('65');
+            await page.getByRole('button', {name:/Calculate BMI/i}).click();
+            await page.waitForTimeout(700);
+            await page.screenshot({path:'screenshots/experiment-04-result.png', fullPage:true});
+            await page.screenshot({path:'screenshots/experiment-06-custom-widgets.png', fullPage:true});
+            await page.screenshot({path:'screenshots/experiment-08-animation.png', fullPage:true});
+
+            await page.getByRole('button', {name:/BMI Guidelines|About BMI/i}).click();
+            await page.waitForTimeout(300);
+            await page.screenshot({path:'screenshots/experiment-04-about.png', fullPage:true});
+            await browser.close();
+          })().catch(e => { console.error(e); process.exit(1); });
+          EOF
+          node /tmp/capture.cjs
+
+      - name: Render real command output screenshots
+        run: |
+          cat > /tmp/render-logs.cjs <<'EOF'
+          const { chromium } = require('playwright');
+          const fs = require('fs');
+          (async () => {
+            const browser = await chromium.launch({headless:true, args:['--no-sandbox']});
+            for (const [file, title, out] of [
+              ['/tmp/flutter-version.txt','Flutter and Dart SDK setup','screenshots/experiment-01-setup.png'],
+              ['/tmp/flutter-test-output.txt','Flutter automated test execution','screenshots/experiment-10-testing.png']
+            ]) {
+              const content = fs.readFileSync(file,'utf8').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+              const page = await browser.newPage({viewport:{width:1100,height:720}});
+              await page.setContent('<html><body style="background:#111827;color:#e5e7eb;font:15px monospace;padding:28px"><h2 style="font:600 20px Arial;color:#5eead4">'+title+'</h2><pre style="white-space:pre-wrap;line-height:1.55">'+content+'</pre></body></html>');
+              await page.screenshot({path:out,fullPage:true});
+              await page.close();
+            }
+            await browser.close();
+          })().catch(e => { console.error(e); process.exit(1); });
+          EOF
+          node /tmp/render-logs.cjs
+
+      - name: Commit screenshots to repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add screenshots/
+          git diff --cached --quiet || git commit -m "Add actual Flutter lab experiment screenshots"
+          git push
