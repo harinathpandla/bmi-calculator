@@ -203,9 +203,9 @@ Each experiment has its own screenshot location below. Screenshots will be displ
 
 **Project evidence:** Flutter project configuration is present. A separate basic Dart demonstration is not currently included in the app source.
 
-**Screenshot:** Add the terminal screenshot at `screenshots/experiment-01-setup.png`.
+**Screenshot:** ![Flutter and Dart SDK setup output](screenshots/experiment-01-setup.png)
 
-> Status: Screenshot pending. Capture the Flutter/Dart version and basic Dart program output.
+> Captured in CI using the Flutter/Dart SDK version commands. The project repository does not include a separate basic Dart demonstration program.
 
 ---
 
@@ -214,7 +214,7 @@ Each experiment has its own screenshot location below. Screenshots will be displ
 
 **Project implementation:** The BMI home screen uses Flutter UI widgets such as Scaffold, AppBar, Container, Card, Column, Row, icons, and buttons.
 
-**Screenshot:** Add the BMI home-screen screenshot at `screenshots/experiment-02-widgets.png`.
+**Screenshot:** ![BMI Calculator home screen](screenshots/experiment-02-widgets.png)
 
 ---
 
@@ -223,7 +223,7 @@ Each experiment has its own screenshot location below. Screenshots will be displ
 
 **Project implementation:** The app uses `MediaQuery`, `LayoutBuilder`, and scrollable layouts to adapt its interface.
 
-**Screenshot:** Add a screenshot showing the app at a narrow and a wider window size at `screenshots/experiment-03-responsive.png`.
+**Screenshot:** ![Responsive mobile layout](screenshots/experiment-03-responsive-mobile.png)\n\n![Responsive wide layout](screenshots/experiment-03-responsive-wide.png)
 
 ---
 
@@ -232,7 +232,7 @@ Each experiment has its own screenshot location below. Screenshots will be displ
 
 **Project implementation:** The app contains home, result, and About screens. Some navigation uses `MaterialPageRoute`; named routes are also defined in the app.
 
-**Screenshot:** Add screenshots showing the Home, Result, and About screens at `screenshots/experiment-04-navigation.png`.
+**Screenshot:** ![Home screen](screenshots/experiment-02-widgets.png)\n\n![Result screen](screenshots/experiment-04-result.png)\n\n![About screen](screenshots/experiment-04-about.png)
 
 ---
 
@@ -241,7 +241,7 @@ Each experiment has its own screenshot location below. Screenshots will be displ
 
 **Project implementation:** The app uses `StatefulWidget` and `setState()` for interactive input and unit selection. Provider is not currently implemented.
 
-**Screenshot:** Add a screenshot showing the unit selector and updated input fields at `screenshots/experiment-05-state.png`.
+**Screenshot:** ![Imperial unit selection and updated fields](screenshots/experiment-05-state.png)
 
 ---
 
@@ -250,7 +250,7 @@ Each experiment has its own screenshot location below. Screenshots will be displ
 
 **Project implementation:** Reusable input fields, buttons, result cards, and category indicators are organized under `lib/widgets/`. The shared theme is defined in `lib/theme/app_theme.dart`.
 
-**Screenshot:** Add a screenshot showing the styled input fields, buttons, and result card at `screenshots/experiment-06-custom-widgets.png`.
+**Screenshot:** ![Reusable custom widgets and styled result card](screenshots/experiment-06-custom-widgets.png)
 
 ---
 
@@ -259,7 +259,7 @@ Each experiment has its own screenshot location below. Screenshots will be displ
 
 **Project implementation:** The app uses `Form`, `GlobalKey<FormState>`, `TextFormField`, and custom validation logic.
 
-**Screenshot:** Add a screenshot showing validation messages for invalid or empty input at `screenshots/experiment-07-validation.png`.
+**Screenshot:** ![Form validation messages](screenshots/experiment-07-validation.png)
 
 ---
 
@@ -268,7 +268,7 @@ Each experiment has its own screenshot location below. Screenshots will be displ
 
 **Project implementation:** The result UI uses `AnimatedOpacity` and `AnimatedContainer`.
 
-**Screenshot:** Add a screenshot of the result screen during or after its animated transition at `screenshots/experiment-08-animation.png`.
+**Screenshot:** ![Animated result screen](screenshots/experiment-08-animation.png)
 
 ---
 
@@ -288,7 +288,7 @@ Each experiment has its own screenshot location below. Screenshots will be displ
 
 **Project implementation:** The project contains `test/bmi_calculator_test.dart` and `test/widget_test.dart`, using Flutter's `flutter_test` framework.
 
-**Screenshot:** Add a terminal screenshot showing the actual successful `flutter test` output at `screenshots/experiment-10-testing.png`.
+**Screenshot:** ![Successful Flutter test output](screenshots/experiment-10-testing.png)
 
 ---
 
